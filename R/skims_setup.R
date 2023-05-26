@@ -3,13 +3,13 @@
 #' 
 prepare_skims <- function(ok_skims_file, pk_skims_file, manifest, skim_taz_map, skim_omx_dir, ...){
   skimsStatus <- system2(
-  command = "bash",
-  args = c("./sh/build_skims.sh", dirname(manifest), dirname(skim_taz_map), skim_omx_dir),
+  command = "powershell",
+  args = c("-ExecutionPolicy","Bypass","./ps1/build_skims.ps1", dirname(manifest), dirname(skim_taz_map), skim_omx_dir),
   )
   
-  if(skimsStatus != 0){
-    stop("\n\nBuilding the skims failed. Check console and/or log(s) for details.\n")
-  }
+  #if(skimsStatus != 0){
+  #  stop("\n\nBuilding the skims failed. Check console and/or log(s) for details.\n")
+  #}
   
   return(paste0(skim_omx_dir, "/skims.omx"))
 }

@@ -2,8 +2,8 @@
 #' 
 run_populationsim <- function(write_result, data_path, out_path){
   popsimStatus <- system2(
-    command = "bash",
-    args = c("./sh/run_popsim.sh", data_path, out_path)
+    command = "powershell",
+    args = c("-ExecutionPolicy","Bypass","./ps1/run_popsim.ps1", data_path, out_path)
   )
 
   

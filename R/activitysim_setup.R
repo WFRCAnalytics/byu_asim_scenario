@@ -6,8 +6,8 @@
 #' 
 run_activitysim <- function(data_path, config_path, output_path, ...){
   activitysimStatus <- system2(
-    command = "bash",
-    args = c("sh/run_activitysim.sh", config_path, data_path, output_path),
+    command = "powershell",
+    args = c("-ExecutionPolicy","Bypass","./ps1/run_activitysim.ps1", config_path, data_path, output_path),
   )
   
   if(activitysimStatus != 0){

@@ -1,0 +1,23 @@
+1. Run tar_make() -- it should run up until skims_file. This is where it will break.
+
+2. After it breaks, manually download these two files (copy and paste them into your browser) and replace them with the ones located in inputs/skims
+	* skm_auto_Ok.mtx.omx: https://byu.box.com/shared/static/s4tkpcdtz367dbgiyu1q9jy5kxp44fcm.omx
+	* skm_auto_Pk.mtx.omx: https://byu.box.com/shared/static/j2jx524u6exlzcfjiyh6p0wgao1wunr8.omx
+	
+3. Once the skm_auto skims are replaced, run tar_make() again -- you should pass the skims_file target
+
+4. It will likely break at popsim_success. So, lets create the popsim environment
+	* Open Windows Powershell
+	* Run the following commands:
+		- conda create -y -n popsim
+		- conda activate popsim
+		- conda install -y pytables
+		- pip install scipy
+		- pip install populationsim
+		
+5. If popsim still breaks with the following error (), try running popsim outside of R and targets. Run the following command in the command prompt:=
+  * python runpopsim.py --config configs_popsim --data data_popsim --output output_popsim
+If popsim runs successfully, update the target popsim_success in the targets pipline to point to the output file: 
+  * tar_target(popsim_sucess, "output_popsim/synthetic_persons.csv", format = "file")
+  
+6. 

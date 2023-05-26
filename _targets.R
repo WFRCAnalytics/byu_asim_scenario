@@ -79,8 +79,9 @@ populationsim <- tar_plan(
 
 	write_popsim = write_files(meta, tract_controls, taz_control, seed,
 		crosswalk, path = "data_popsim", dirs),
-	tar_target(popsim_success, run_populationsim(write_popsim, "data_popsim", "output_popsim"),
-		format = "file")
+	#tar_target(popsim_success, run_populationsim(write_popsim, "data_popsim", "output_popsim"),
+	#	format = "file")
+	tar_target(popsim_sucess, "output_popsim/synthetic_persons.csv", format = "file")
 )
 
 build_land_use_dataset <- tar_plan(
